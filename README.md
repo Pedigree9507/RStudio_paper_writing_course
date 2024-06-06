@@ -12,12 +12,12 @@ Add the specific information about your paper here:
 
 This repository contains the data and code for our paper:
 
-> Ryan, (2024). *New title*. Fancy journal <https://doi.org/xxx/xxx>
+> Ryan, (2024). ***New title***. Fancy journal <https://doi.org/xxx/xxx>
 
 Our pre-print is online here:
 
-> Ryan Ryan, (2023). *New title*. biorxiv, Accessed 06 Jun 2024. Online
-> at <https://doi.org/xxx/xxx>
+> Ryan Ryan, (2023). ***New title***. biorxiv, Accessed 06 Jun 2024.
+> Online at <https://doi.org/xxx/xxx>
 
 ### How to cite
 
