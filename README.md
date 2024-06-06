@@ -12,22 +12,19 @@ Add the specific information about your paper here:
 
 This repository contains the data and code for our paper:
 
-> Authors, (YYYY). *Title of your paper goes here*. Name of journal/book
-> <https://doi.org/xxx/xxx>
+> Ryan, (2024). *New title*. Fancy journal <https://doi.org/xxx/xxx>
 
 Our pre-print is online here:
 
-> Authors, (YYYY). *Title of your paper goes here*. Name of
-> journal/book, Accessed 24 Apr 2024. Online at
-> <https://doi.org/xxx/xxx>
+> Ryan Ryan, (2023). *New title*. biorxiv, Accessed 06 Jun 2024. Online
+> at <https://doi.org/xxx/xxx>
 
 ### How to cite
 
 Please cite this compendium as:
 
-> Authors, (2024). *Compendium of R code and data for Title of your
-> paper goes here*. Accessed 24 Apr 2024. Online at
-> <https://doi.org/xxx/xxx>
+> Ryan, (2024). *Compendium of R code and data for New title*. Accessed
+> 06 Jun 2024. Online at <https://doi.org/xxx/xxx>
 
 ## Contents
 
