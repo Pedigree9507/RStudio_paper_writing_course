@@ -281,14 +281,18 @@ Studies (COS), 69120 Heidelberg, Germany
 HTML, PDF, and MS Word documents. For more details on using R Markdown
 see \url{http://rmarkdown.rstudio.com}.
 
-\textbf{text in bold} \emph{italic} \ul{underline}
+terminal command to create pdf : \$ cd ``directory'' \$ quarto render
+Manuscript.qmd --to pdf
+
+\textbf{text in bold} \emph{italic} \ul{underline} \^{}superscript
 
 \section{Introduction}\label{introduction}
 
 You can add references either by referring to their id in the .bib file
-e.g., (Marinković et al., 2019), or by switching to the visual editor
-(Cogwheel in the .Rmd menu -\textgreater{} Use Visual Editor). {[}Jokura
-et al. (2023){]}(Jokura et al., 2023)(Jacobs and Ryu, 2023)
+e.g., (Marinković \emph{et al}, 2019), or by switching to the visual
+editor (Cogwheel in the .Rmd menu -\textgreater{} Use Visual Editor).
+{[}Jokura \emph{et al} (2023){]}(Jokura \emph{et al}, 2023)(Jacobs \&
+Ryu, 2023)
 
 It is now a test to edit the text and see how the changes show up on
 GitHub.
@@ -298,7 +302,7 @@ Test of git show.
 In the visual editor mode, go to `Insert' -\textgreater{} @ Citation
 
 You can select a Zotero library, PubMed, CrossRef etc. and insert the
-citations. (Jacobs and Ryu, 2023)
+citations. (Jacobs \& Ryu, 2023)
 
 The easiest way is to use the command line:
 
@@ -308,8 +312,8 @@ The easiest way is to use the command line:
 \end{Highlighting}
 \end{Shaded}
 
-\emph{Platynereis dumerilii} is a marine annelid\ldots{} (Ozpolat et
-al., 2021)
+\emph{Platynereis dumerilii} is a marine annelid\ldots{} (Ozpolat
+\emph{et al}, 2021)
 
 The references are stored in manuscript/references.bib (need to be
 defined in the Yaml header). This file will automatically updated when
@@ -333,9 +337,10 @@ Test comment here.
 
 You can add your figures into the rendered document. We saved the
 figures into /manuscript/figures or /manuscript/figure\_supplements and
-can insert them from there. We use knitr::include\_graphics for this.
-The title and legend can also be edited, as will as the width of the
-output figure. Test comment behaviour:
+can insert (Acebron \& Niehrs, 2016) them from there. We use
+knitr::include\_graphics for this. The title and legend can also be
+edited, as will as the width of the output figure. Test comment
+behaviour:
 
 \begin{figure}[H]
 
@@ -541,33 +546,35 @@ England Biolabs & R0520L & NA \\
 \subsection{References}\label{references}
 
 \phantomsection\label{refs}
-\begin{CSLReferences}{1}{0}
+\begin{CSLReferences}{1}{1}
+\bibitem[\citeproctext]{ref-Acebron2016}
+Acebron SP \& Niehrs C (2016)
+\href{https://doi.org/10.1016/j.tcb.2016.07.009}{β-Catenin-Independent
+Roles of Wnt/LRP6 Signaling}. \emph{Trends in Cell Biology} 26: 956--967
+
 \bibitem[\citeproctext]{ref-Jacobs2023}
-Jacobs EAK, Ryu S. 2023. Larval zebrafish as a model for studying
-individual variability in translational neuroscience research.
-\emph{Frontiers in Behavioral Neuroscience} \textbf{17}.
-doi:\href{https://doi.org/10.3389/fnbeh.2023.1143391}{10.3389/fnbeh.2023.1143391}
+Jacobs EAK \& Ryu S (2023)
+\href{https://doi.org/10.3389/fnbeh.2023.1143391}{Larval zebrafish as a
+model for studying individual variability in translational neuroscience
+research}. \emph{Frontiers in Behavioral Neuroscience} 17
 
 \bibitem[\citeproctext]{ref-Jokura_2023}
-Jokura K, Ueda N, Gühmann M, Yañez-Guerra LA, Słowiński P, Wedgwood KCA,
-Jékely G. 2023. Nitric oxide feedback to ciliary photoreceptor cells
-gates a UV avoidance circuit.
-doi:\href{https://doi.org/10.7554/elife.91258.1}{10.7554/elife.91258.1}
+Jokura K, Ueda N, Gühmann M, Yañez-Guerra LA, Słowiński P, Wedgwood KCA
+\& Jékely G (2023) \href{https://doi.org/10.7554/elife.91258.1}{Nitric
+oxide feedback to ciliary photoreceptor cells gates a UV avoidance
+circuit}.
 
 \bibitem[\citeproctext]{ref-Marinkovi2020}
-Marinković M, Berger J, Jékely G. 2019. Neuronal coordination of motile
-cilia in locomotion and feeding. \emph{Philosophical Transactions of the
-Royal Society B: Biological Sciences} \textbf{375}:20190165.
-doi:\href{https://doi.org/10.1098/rstb.2019.0165}{10.1098/rstb.2019.0165}
+Marinković M, Berger J \& Jékely G (2019)
+\href{https://doi.org/10.1098/rstb.2019.0165}{Neuronal coordination of
+motile cilia in locomotion and feeding}. \emph{Philosophical
+Transactions of the Royal Society B: Biological Sciences} 375: 20190165
 
 \bibitem[\citeproctext]{ref-ozpolat2021}
 Ozpolat BD, Randel N, Williams EA, Bezares-Calderón LA, Andreatta G,
-Balavoine G, Bertucci PY, Ferrier DEK, Gambi MC, Gazave E,
-Handberg-Thorsager M, Hardege J, Hird C, Hsieh Y-W, Hui J, Mutemi KN,
-Schneider SQ, Simakov O, Vergara HM, Vervoort M, Jékely G,
-Tessmar-Raible K, Raible F, Arendt D. 2021. The Nereid on the rise:
-Platynereis as a model system. \emph{Zenodo}.
-doi:\href{https://doi.org/10.5281/ZENODO.4907400}{10.5281/ZENODO.4907400}
+Balavoine G, Bertucci PY, Ferrier DEK, Gambi MC, Gazave E, \emph{et al}
+(2021) \href{https://doi.org/10.5281/ZENODO.4907400}{The Nereid on the
+rise: Platynereis as a model system}. \emph{Zenodo}
 
 \end{CSLReferences}
 

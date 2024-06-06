@@ -100,7 +100,7 @@ data_Ashwini_sel
 # Add mean and SD columns with group_by() and mutate() --------
 
 data_Ashwini_sel_M_SD <- data_Ashwini_sel %>%
-  group_by(gene) %>%
+  group_by(gene,days) %>%
   mutate(mean2dct = mean(x2_dct)) %>%
   mutate(sd2dct = sd(x2_dct))
 data_Ashwini_sel_M_SD
@@ -293,7 +293,7 @@ ggsave( "analysis/pictures/plot_Jose1b.png",
 
 ggsave(
   "analysis/pictures/synuclein_plot.png", plot_syn, 
-  bg = "white"
+  bg = "transparent"
   )
 
 # Assemble figure with cowplot and patchwork --------------
@@ -306,6 +306,8 @@ img2 <- readPNG("analysis/pictures/plot_Jose1b.png")
 #convert to panels
 panel_JoseA <- ggdraw() + draw_image(img1)
 panel_JoseB <- ggdraw() + draw_image(img2)
+panel_JoseC <-ggdraw() + draw_image(plot_Jose1)
+panel_JoseD <-ggdraw() + draw_image(plot_Jose2)
 
 #define layout with textual representation
 layout <- "
@@ -318,9 +320,14 @@ Figure_Jose <- panel_JoseA + panel_JoseB + plot_Jose1 + plot_Jose2 +
   plot_annotation(tag_levels = 'A') & 
   theme(plot.tag = element_text(size = 12, face='plain'))
 
+Figure_Jose2 <- panel_JoseA + panel_JoseB + panel_JoseC + panel_JoseD +
+  plot_layout(design = layout, heights = c(1, 1)) +
+  plot_annotation(tag_levels = 'A') & 
+  theme(plot.tag = element_text(size = 12, face='plain'))
+
 #save figure as png and pdf
 ggsave(
-  "manuscript/figures/Figure_Jose.png", limitsize = FALSE, 
+  "manuscript/figures/Figure_Jose2.png", limitsize = FALSE, 
   units = c("px"), Figure_Jose, width = 4000, height = 1600,
   bg = "white"
   )
@@ -335,8 +342,8 @@ image_read("manuscript/figures/Figure_Jose.png")
 # Annotating a ggplot object ----------------
 
 plot_syn_ann <- plot_syn +
-  annotate("segment", x = 20, xend = 50, y = 1, yend = 1, linewidth = 1)+
-  annotate("text", x = 34, y = 300, label = "30 sec", size = 3)
+  annotate("segment", x = 20, xend = 20, y = 3000, yend = 10000, linewidth = 1)+
+  annotate("text", x = 34, y = 10000, label = "control", size = 3)
 plot_syn_ann
 
 
@@ -363,6 +370,7 @@ panel_INNOS <- ggdraw() +
                lineend = "butt",
                linejoin = "mitre",
                arrow.fill = "black", size = 0.2)
+panel_INNOS
 
 #define layout
 layout <- "AB"
@@ -395,16 +403,17 @@ image_read("manuscript/figures/Figure_IHC.png")
 #read images and make annotated panel
 panel_NOS2d_HCR <- ggdraw() + draw_image(readPNG("analysis/pictures/HCR-IHC_51_AP_NOS_actub_56um.png")) +
   draw_label("in situ HCR", x = 0.3, y = 0.99, size = 10) +
-  draw_label("NOS", x = 0.12, y = 0.9, color="magenta", size = 11, fontface="italic") +
-  draw_label("acTub", x = 0.36, y = 0.9, color="green", size = 11, fontface="plain") +
-  draw_line(x = c(0.1, 0.46), y = c(0.08, 0.08), color = "white", size = 0.5) +
-  draw_label(expression(paste("20 ", mu, "m")), x = 0.28, y = 0.11, color = "white", size = 8)
+  draw_label("NOS", x = 0.9, y = 0.05, color="magenta", size = 11, fontface="italic") +
+  draw_label("acTub", x = 0.9, y = 0.09, color="green", size = 11, fontface="plain") +
+  draw_line(x = c(0.1, 0.31), y = c(0.05, 0.05), color = "white", size = 0.5) +
+  draw_label(expression(paste("20 ", mu, "m")), x = 0.28, y = 0.07, color = "white", size = 8)
   
 panel_NIT_HCR <- ggdraw() + draw_image(readPNG("analysis/pictures/HCR_72_AP_NIT_94um.png")) +
   draw_label("transgene + IHC", x = 0.5, y = 0.99, size = 10) +
-  draw_label("NOSp::palmi-3xHA", x = 0.34, y = 0.9, color="magenta", size = 10, fontface="plain") +
-  draw_label("acTub", x = 0.8, y = 0.9, color="green", size = 10, fontface="plain") +
-  draw_line(x = c(0.1, 0.31), y = c(0.08, 0.08), color = "white", size = 0.5) 
+  draw_label("NOSp::palmi-3xHA", x = 0.9, y = 0.05, color="magenta", size = 10, fontface="plain") +
+  draw_label("acTub", x = 0.9, y = 0.09, color="green", size = 10, fontface="plain") +
+  draw_line(x = c(0.05, 0.35), y = c(0.05, 0.05), color = "white", size = 0.5) +
+  draw_label(expression(paste("20 ", mu, "m")), x = 0.28, y = 0.07, color = "white", size = 8)
 panel_NIT_HCR
 
 # introduce gaps in layout --------------
@@ -413,10 +422,10 @@ layout <- "A#B"
 
 #assemble multipanel figure based on layout
 Figure_scalebars <- panel_NOS2d_HCR + panel_NIT_HCR +
-  plot_layout(design = layout, widths = c(1, 0.01, 1)) +
+  plot_layout(design = layout, widths = c(1, 0.05, 1)) +
   plot_annotation(tag_levels = 'A') & 
   theme(plot.tag = element_text(size = 12, face='plain'))
-
+Figure_scalebars
 #save figure as png
 ggsave(
   "manuscript/figures/Figure_scalebars.png",
@@ -506,7 +515,7 @@ Figure_complex <- panel_Platy + panel_FVRI +  panel_NOS +
   plot_layout(design = layout, heights = c(1, 1, 0.05, 2)) +
   plot_annotation(tag_levels = 'a') & 
   theme(plot.tag = element_text(size = 12, face='plain'))
-
+Figure_complex
 #save figure as png
 ggsave(
   "manuscript/figures/Figure_complex.png",
